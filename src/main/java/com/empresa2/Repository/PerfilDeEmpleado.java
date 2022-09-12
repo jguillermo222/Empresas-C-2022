@@ -1,33 +1,34 @@
 package com.empresa2.Repository;
+import lombok.*;
 
-
-import lombok.Getter;
-import lombok.Setter;
-
+import javax.persistence.*;
 import java.util.Date;
 
-//@Entity
-//Table(name="perfil")
+@Entity
+@Table(name="perfil")
+@Data
+
 public class PerfilDeEmpleado {
 
-    @Getter @Setter
-    //@Id
-    //GeneratedValue(strategy = GenerationType.Identity)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String cedula;
-    //@Column
+    @Column
     private String image;
-    //@Column
+    @Column
     private String telefono;
-    //@Column
+    @Column
     private String celular;
-    //@Column
+    @Column
     private Date fechaDeCreacion;
-    //@Column
+    @Column
     private Date fechaDeActualizacion;
 
-    //conector
-    //@OneToOne
-    //@JoinColumn(name = profile)
-    //private User user;
+    //connectores
+
+
+
+
+
 
 }

@@ -1,44 +1,45 @@
 package com.empresa2.Repository;
+import lombok.*;
 
-
-import lombok.Getter;
-import lombok.Setter;
-
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
-//@Entity
-//Table(name="empresa")
+
+@Entity
+@Table(name="empresas")
+@Data
+
 public class Empresa {
 
-    @Getter @Setter
-    //@Id
-    //@GeneratedValue (Strategy = GenerationType.IDENTUTY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmpresa;
 
-    //@Column (unique=true)
+    @Column(name = "nombre",unique=true)
     private String nombre;
 
-    //@Column (unique=true)
-    private String documento;
+    @Column (name = "documento", unique=true)
+    private String rut;
 
-    //@Column
+    @Column(name="telefono")
     private String telefono;
 
-    //@Column
+    @Column(name="direccion")
     private String direccion;
 
-    //@Column
+
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY) //3
+    private List<Empleado> Empleados;
+
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY) //5
+    private List<Transaccion> Transacciones;
+
+    @Column(name="fechaDeCreacion")
     private Date fechaDeCreacion;
 
-    //@Column
+    @Column (name="fechaDeActualizacion")
     private Date fechaDeActualizacion;
 
-    //connector
-
-    //@OneToMany(mappedBy = "enterprise")
-    //private User[] users;
-
-    //@OneToMany(mappedBy = "enterprise")
-    //Private Transacciones transacciones;
 
 }
